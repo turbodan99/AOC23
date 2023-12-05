@@ -3,7 +3,7 @@
 games = {}
 game_number = 1
 
-# Populate dictionary of games with their numbers and process counter
+# Populate dictionary of games with their numbers and initial process counter
 f = open("input.txt", "r")
 for card in f.read().splitlines():
     draw_results = card[10:39].split()
@@ -16,7 +16,7 @@ for card in f.read().splitlines():
     ]
     game_number += 1
 
-# Iterate through the list, updating the process counter of any subsequent cards one
+# Iterate through the list, updating the process counter of any subsequent cards won
 for game in games:
     game_number = game
     draw_results = games[game][0]
