@@ -20,10 +20,6 @@ f = open("input.txt", "r")
 for line in f.read().splitlines():
     as_list = list(line)
     grid = np.vstack([grid, as_list])
-    # if as_list.count(".") == line_length:  # Millionise empty rows (add 999999)
-    #     for i in range(1,1000000):
-    #         print(f"row {i} added for {line}")
-    #         grid = np.vstack([grid, as_list])
 
 # Remove dummy first row
 new_grid = np.delete(grid, 0, axis=0)
@@ -72,7 +68,6 @@ while len(galaxy_coords) > 1:
     for other_galaxy in galaxy_coords[1:]:
         route_steps = nx.bidirectional_shortest_path(G, source=start_galaxy, target=other_galaxy)
         route_steps.remove(start_galaxy) # remove self from steps (start at next one)
-        #print(f" my route steps are: {route_steps}")
         # if any of those rows are in duplicate_rows, add 999999
         add_rows = []
         for r in route_steps:
