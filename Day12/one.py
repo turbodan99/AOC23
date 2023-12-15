@@ -33,7 +33,7 @@ def generate_options(input, counts):
 
     return return_list
 
-def process_options(listed, input, format):
+def process_options(listed, input, pattern):
     matched = 0
 
     for option in input:
@@ -41,7 +41,7 @@ def process_options(listed, input, format):
         for i in list(option):
             pos = listed_temp.index("?")
             listed_temp[pos] = i
-        if list_to_count(listed_temp) == format:
+        if list_to_count(listed_temp) == pattern:
             matched += 1
 
     return matched
@@ -52,11 +52,11 @@ main_count = 0
 for line in file.read().splitlines():
     input = line.split(" ")[0]
     list_input = [*input]
-    format = ((line.split(" ")[1])).split(",")
-    format = [int(x) for x in format]
-    get_options = generate_options(input, format)
+    pattern = ((line.split(" ")[1])).split(",")
+    pattern = [int(x) for x in pattern]
+    get_options = generate_options(input, pattern)
     options = idp(get_options)
-    main_count += process_options(list_input, options, format)
+    main_count += process_options(list_input, options, pattern)
 
 print(main_count)
 
